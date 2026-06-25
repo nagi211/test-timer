@@ -9,7 +9,7 @@ import { ControlButtons } from './ControlButtons';
 import { colors } from '../constants/theme';
 
 export function TimerScreen() {
-  const { elapsed, displayTime, isRunning, start, pause, reset } = useTimer();
+  const { displayTime, isRunning, start, pause, reset } = useTimer();
 
   return (
     <LinearGradient
@@ -23,7 +23,7 @@ export function TimerScreen() {
         <View style={styles.container}>
           <Text style={styles.header}>Timer</Text>
           <View style={styles.displayWrapper}>
-            <TimerDisplay displayTime={displayTime} elapsed={elapsed} />
+            <TimerDisplay displayTime={displayTime} />
           </View>
           <View style={styles.controlsWrapper}>
             <ControlButtons
