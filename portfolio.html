@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>giandelarosa — Portfolio</title>
+  <title>Gian Roni Dela Rosa — Portfolio</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -28,10 +28,7 @@
       padding: 2rem 1rem;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .container { max-width: 900px; margin: 0 auto; }
 
     /* ── Hero ── */
     .hero {
@@ -46,38 +43,32 @@
     }
 
     .avatar {
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      border: 3px solid var(--border);
+      border: 3px solid var(--accent);
       flex-shrink: 0;
+      object-fit: cover;
     }
 
-    .hero-info h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .hero-info .username {
-      color: var(--muted);
-      font-size: 1rem;
+    .hero-info h1 { font-size: 1.8rem; font-weight: 700; color: var(--text); }
+    .hero-info .title {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-top: 0.2rem;
     }
-
     .hero-info .bio {
       margin-top: 0.75rem;
       color: var(--muted);
       line-height: 1.6;
+      font-size: 0.9rem;
+      max-width: 560px;
     }
 
-    .hero-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
+    .hero-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
     .hero-links a {
       display: inline-flex;
       align-items: center;
@@ -87,13 +78,12 @@
       font-size: 0.875rem;
       transition: opacity 0.15s;
     }
-
     .hero-links a:hover { opacity: 0.75; }
 
     /* ── Stats bar ── */
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 1rem;
       margin-bottom: 2rem;
     }
@@ -102,18 +92,12 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
+      padding: 1.25rem 1rem;
       text-align: center;
     }
-
-    .stat-card .num {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
+    .stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
     .stat-card .label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
       margin-top: 0.2rem;
       text-transform: uppercase;
@@ -127,9 +111,51 @@
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 0.5rem;
+    }
+
+    /* ── Work Experience ── */
+    .experience { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+      position: relative;
+      border-left: 3px solid var(--accent);
+    }
+
+    .exp-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .exp-role { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .exp-company { font-size: 0.875rem; color: var(--accent); margin-top: 0.15rem; }
+    .exp-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #1f2937;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.2rem 0.65rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-bullets {
+      margin-top: 0.75rem;
+      padding-left: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .exp-bullets li { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    .exp-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
     }
 
     /* ── Project grid ── */
@@ -152,61 +178,16 @@
       text-decoration: none;
       color: inherit;
     }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-card .card-top { display: flex; align-items: center; }
+    .project-card .repo-icon { color: var(--muted); flex-shrink: 0; }
+    .project-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--accent); flex: 1; margin-left: 0.5rem; }
+    .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; flex: 1; }
+    .card-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; font-size: 0.78rem; color: var(--muted); }
 
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
+    .lang-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
-    .project-card .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .project-card .repo-icon {
-      color: var(--muted);
-      flex-shrink: 0;
-    }
-
-    .project-card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--accent);
-      flex: 1;
-      margin-left: 0.5rem;
-    }
-
-    .project-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .card-footer {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: auto;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .lang-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
       background: var(--tag-bg);
       color: var(--tag-color);
@@ -219,7 +200,7 @@
     /* ── Skills ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 0.75rem;
       margin-bottom: 2.5rem;
     }
@@ -231,12 +212,31 @@
       padding: 0.6rem 0.75rem;
       font-size: 0.82rem;
       color: var(--text);
-      text-align: center;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
+
+    .skill-bar-wrap { flex: 1; background: var(--border); border-radius: 4px; height: 4px; }
+    .skill-bar { height: 4px; border-radius: 4px; background: var(--accent); }
+
+    /* ── Education ── */
+    .education { margin-bottom: 2.5rem; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      border-left: 3px solid var(--accent2);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .edu-degree { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .edu-school { font-size: 0.85rem; color: var(--accent2); margin-top: 0.15rem; }
+    .edu-date { font-size: 0.78rem; color: var(--muted); background: #1f2937; border: 1px solid var(--border); border-radius: 20px; padding: 0.2rem 0.65rem; white-space: nowrap; }
 
     /* ── Footer ── */
     footer {
@@ -246,18 +246,17 @@
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
     }
-
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── Language colors ── */
-    .lang-js    { background: #f1e05a; }
-    .lang-ts    { background: #3178c6; }
+    .lang-js     { background: #f1e05a; }
+    .lang-ts     { background: #3178c6; }
     .lang-kotlin { background: #a97bff; }
 
     @media (max-width: 600px) {
       .hero { flex-direction: column; text-align: center; }
       .hero-links { justify-content: center; }
+      .exp-header { flex-direction: column; }
     }
   </style>
 </head>
@@ -269,19 +268,19 @@
       <img
         class="avatar"
         src="https://avatars.githubusercontent.com/u/37435456?v=4"
-        alt="giandelarosa avatar"
+        alt="Gian Roni Dela Rosa"
       />
       <div class="hero-info">
-        <h1>giandelarosa</h1>
-        <div class="username">@nagi211 on GitHub</div>
+        <h1>Gian Roni Dela Rosa</h1>
+        <div class="title">Senior Software Engineer</div>
         <p class="bio">
-          Developer building mobile and web products — from real-time apps to
-          community platforms. Works primarily in TypeScript, JavaScript, and
-          Kotlin.
+          Consistently recognized for technical troubleshooting skills used to rapidly and
+          cost-effectively resolve challenging issues. Quickly learns and masters new technology;
+          equally successful in both team and self-directed settings; proficient in a range of
+          computer systems, languages, and tools.
         </p>
         <div class="hero-links">
           <a href="https://github.com/nagi211" target="_blank" rel="noopener">
-            <!-- GitHub icon -->
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
               0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15
@@ -292,7 +291,25 @@
               3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
               8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
             </svg>
-            github.com/giandelarosa
+            github.com/nagi211
+          </a>
+          <a href="mailto:gianguadaniadelarosa@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75
+              1.75 0 010 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 4.307v7.943c0 .138.112.25.25.25h12.5a.25.25
+              0 00.25-.25V4.307l-5.931 3.954a1.75 1.75 0 01-1.938 0L1.5 4.307zm13-1.554L8
+              6.853 1.5 2.753h13z"/>
+            </svg>
+            gianguadaniadelarosa@gmail.com
+          </a>
+          <a href="tel:+639097622463">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M1.5 1.5A1.5 1.5 0 013 0h2.5a1.5 1.5 0 011.448 1.109l.502 2.007a1.5 1.5
+              0 01-.537 1.563l-.92.69a11.035 11.035 0 005.638 5.638l.69-.92a1.5 1.5 0
+              011.563-.537l2.007.502A1.5 1.5 0 0116 11.5V14a1.5 1.5 0 01-1.5 1.5A14.5 14.5
+              0 011.5 1.5z"/>
+            </svg>
+            +63 909 762 2463
           </a>
         </div>
       </div>
@@ -301,35 +318,127 @@
     <!-- Stats -->
     <div class="stats-bar">
       <div class="stat-card">
-        <div class="num">5</div>
-        <div class="label">Repositories</div>
+        <div class="num">7+</div>
+        <div class="label">Years Experience</div>
       </div>
       <div class="stat-card">
-        <div class="num">3</div>
-        <div class="label">Public Projects</div>
+        <div class="num">4</div>
+        <div class="label">Companies</div>
       </div>
       <div class="stat-card">
-        <div class="num">3</div>
-        <div class="label">Languages</div>
+        <div class="num">10+</div>
+        <div class="label">Apps Shipped</div>
       </div>
       <div class="stat-card">
-        <div class="num">2026</div>
-        <div class="label">Active Since</div>
+        <div class="num">6</div>
+        <div class="label">Tech Skills</div>
       </div>
     </div>
 
+    <!-- Work Experience -->
+    <div class="section-header">Work Experience</div>
+    <div class="experience">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Engineer &mdash; Android Developer</div>
+            <div class="exp-company">Cognizant &mdash; Deployed to US Major Airline</div>
+          </div>
+          <span class="exp-date">Feb 2022 &ndash; Jul 2026</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed and maintained Android applications for a major US Airline serving a large-scale user base.</li>
+          <li>Implemented modern UI using Jetpack Compose and followed MVVM architecture.</li>
+          <li>Integrated REST APIs using Retrofit and optimized network performance.</li>
+          <li>Utilized Firebase services for analytics and real-time features.</li>
+          <li>Collaborated with cross-functional Agile teams to deliver high-quality features.</li>
+          <li>Leveraged GitHub Copilot to accelerate development and improve productivity.</li>
+        </ul>
+        <div class="exp-apps">
+          <span class="tag">Android (Kotlin)</span>
+          <span class="tag">Jetpack Compose</span>
+          <span class="tag">MVVM</span>
+          <span class="tag">Retrofit</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">Agile</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Software Engineer &mdash; Android Developer</div>
+            <div class="exp-company">Vertere Globals &mdash; Deployed to Accenture</div>
+          </div>
+          <span class="exp-date">Aug 2021 &ndash; Feb 2022</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed Android applications using Android Kotlin.</li>
+          <li>Monitored and managed resources for training progress and deployments.</li>
+        </ul>
+        <div class="exp-apps">
+          <span class="tag">Android (Kotlin)</span>
+          <span class="tag">Google Play Console</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Software Engineer &mdash; Android Developer</div>
+            <div class="exp-company">Titanium Systems Technologies Inc.</div>
+          </div>
+          <span class="exp-date">Nov 2019 &ndash; Jul 2021</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed Android applications from scratch using Android Studio (Java) and maintained existing apps.</li>
+          <li>Created REST endpoint services using Python Flask framework.</li>
+          <li>Maintained and updated web applications built with Angular.</li>
+        </ul>
+        <div class="exp-apps">
+          <span class="tag">Android (Java)</span>
+          <span class="tag">Python Flask</span>
+          <span class="tag">Angular</span>
+          <span class="tag">Blitz Client</span>
+          <span class="tag">Blitz Rider</span>
+          <span class="tag">myHR Companion</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Junior Software Developer &mdash; Android</div>
+            <div class="exp-company">E-Bridge</div>
+          </div>
+          <span class="exp-date">Jun 2019 &ndash; Nov 2019</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed Android applications using Android Studio, Java, JSON, and SVN.</li>
+          <li>Successfully uploaded applications to the Google Play Store.</li>
+        </ul>
+        <div class="exp-apps">
+          <span class="tag">Android (Java)</span>
+          <span class="tag">JSON</span>
+          <span class="tag">SVN</span>
+          <span class="tag">Hotel HouseKeeping App</span>
+          <span class="tag">Hotel Check-in Kiosk</span>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Projects -->
-    <div class="section-header">Featured Projects</div>
+    <div class="section-header">Personal Projects &amp; Repos</div>
     <div class="projects">
 
-      <!-- turoly -->
       <a class="project-card" href="https://github.com/nagi211/turoly" target="_blank" rel="noopener">
         <div class="card-top">
           <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
-            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
-            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
-            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75
+            0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012
+            11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
           </svg>
           <h3>turoly</h3>
         </div>
@@ -341,18 +450,16 @@
         </div>
         <div class="card-footer">
           <span class="lang-dot lang-ts"></span>
-          TypeScript &nbsp;·&nbsp; Updated Jun 2026
+          TypeScript &nbsp;·&nbsp; Jun 2026
         </div>
       </a>
 
-      <!-- koino -->
       <a class="project-card" href="https://github.com/nagi211/koino" target="_blank" rel="noopener">
         <div class="card-top">
           <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
-            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
-            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
-            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75
+            0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012
+            11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
           </svg>
           <h3>koino</h3>
         </div>
@@ -364,50 +471,25 @@
         </div>
         <div class="card-footer">
           <span class="lang-dot lang-ts"></span>
-          TypeScript &nbsp;·&nbsp; Created Jun 2026
+          TypeScript &nbsp;·&nbsp; Jun 2026
         </div>
       </a>
 
-      <!-- test-timer -->
-      <a class="project-card" href="https://github.com/nagi211/test-timer" target="_blank" rel="noopener">
-        <div class="card-top">
-          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
-            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
-            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
-            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
-          </svg>
-          <h3>test-timer</h3>
-        </div>
-        <p>A React Native / Expo timer app — clean mobile UI built with JavaScript.</p>
-        <div class="tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">React Native</span>
-          <span class="tag">Expo</span>
-          <span class="tag">Mobile</span>
-        </div>
-        <div class="card-footer">
-          <span class="lang-dot lang-js"></span>
-          JavaScript &nbsp;·&nbsp; Jun 2026
-        </div>
-      </a>
-
-      <!-- EYM-guessme (private) -->
       <div class="project-card" style="opacity:0.6; cursor:default;">
         <div class="card-top">
           <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M4 4v2h-.25C2.76 6 2 6.76 2 7.75v5.5C2 14.24 2.76 15 3.75
-            15h8.5c.99 0 1.75-.76 1.75-1.75v-5.5C14 6.76 13.24 6 12.25 6H12V4a4
-            4 0 018 0 .75.75 0 11-1.5 0 2.5 2.5 0 00-5 0zm0 0"/>
+            <path d="M4 4v2h-.25C2.76 6 2 6.76 2 7.75v5.5C2 14.24 2.76 15 3.75 15h8.5c.99
+            0 1.75-.76 1.75-1.75v-5.5C14 6.76 13.24 6 12.25 6H12V4a4 4 0 018 0 .75.75
+            0 11-1.5 0 2.5 2.5 0 00-5 0zm0 0"/>
           </svg>
           <h3>EYM-guessme</h3>
           <span class="tag" style="font-size:0.68rem;margin-left:auto;">Private</span>
         </div>
-        <p>An Android guessing game built in Kotlin — a fun interactive mobile experience.</p>
+        <p>Personal Android guessing game built in Kotlin with Firebase — uploaded on Google Play.</p>
         <div class="tags">
           <span class="tag">Kotlin</span>
-          <span class="tag">Android</span>
-          <span class="tag">Game</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">Google Play</span>
         </div>
         <div class="card-footer">
           <span class="lang-dot lang-kotlin"></span>
@@ -415,47 +497,70 @@
         </div>
       </div>
 
-      <!-- djian (private) -->
-      <div class="project-card" style="opacity:0.6; cursor:default;">
-        <div class="card-top">
-          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-            <path d="M4 4v2h-.25C2.76 6 2 6.76 2 7.75v5.5C2 14.24 2.76 15 3.75
-            15h8.5c.99 0 1.75-.76 1.75-1.75v-5.5C14 6.76 13.24 6 12.25 6H12V4a4
-            4 0 018 0 .75.75 0 11-1.5 0 2.5 2.5 0 00-5 0zm0 0"/>
-          </svg>
-          <h3>djian</h3>
-          <span class="tag" style="font-size:0.68rem;margin-left:auto;">Private</span>
-        </div>
-        <p>A private Android project built with Kotlin.</p>
-        <div class="tags">
-          <span class="tag">Kotlin</span>
-          <span class="tag">Android</span>
-        </div>
-        <div class="card-footer">
-          <span class="lang-dot lang-kotlin"></span>
-          Kotlin &nbsp;·&nbsp; 2020
-        </div>
-      </div>
-
     </div>
 
     <!-- Skills -->
-    <div class="section-header">Tech Stack</div>
+    <div class="section-header">Technical Skills</div>
     <div class="skills-grid">
-      <div class="skill-chip">TypeScript</div>
-      <div class="skill-chip">JavaScript</div>
-      <div class="skill-chip">Kotlin</div>
-      <div class="skill-chip">React Native</div>
-      <div class="skill-chip">Expo</div>
-      <div class="skill-chip">Android</div>
-      <div class="skill-chip">Node.js</div>
-      <div class="skill-chip">Git</div>
+      <div class="skill-chip">
+        Android (Kotlin)
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Jetpack Compose
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Android (Java)
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Google Play Console
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+      <div class="skill-chip">
+        TypeScript
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Python (Flask)
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Angular / HTML
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Firebase
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+      </div>
+      <div class="skill-chip">
+        REST APIs / Retrofit
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+      <div class="skill-chip">
+        Git / SVN
+        <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section-header">Education</div>
+    <div class="education">
+      <div class="edu-card">
+        <div>
+          <div class="edu-degree">BS in Information and Communication Technology</div>
+          <div class="edu-school">Bataan Peninsula State University</div>
+        </div>
+        <span class="edu-date">Jun 2015 &ndash; Jun 2019</span>
+      </div>
     </div>
 
     <footer>
-      Built with ♥ &mdash; view on
+      Built with &#9825; &mdash;
       <a href="https://github.com/nagi211" target="_blank" rel="noopener">giandelarosa on GitHub</a>
     </footer>
+
   </div>
 </body>
 </html>
