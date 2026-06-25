@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nagi211 — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --tag-bg: #1f6feb26;
+      --tag-color: #58a6ff;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 2.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .hero-info h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .hero-info .username {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-info .bio {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: opacity 0.15s;
+    }
+
+    .hero-links a:hover { opacity: 0.75; }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-card .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-card .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    /* ── Project grid ── */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.15s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .project-card .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-card .repo-icon {
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .project-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      flex: 1;
+      margin-left: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: auto;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .lang-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      border: 1px solid #1f6feb55;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Language colors ── */
+    .lang-js    { background: #f1e05a; }
+    .lang-ts    { background: #3178c6; }
+    .lang-kotlin { background: #a97bff; }
+
+    @media (max-width: 600px) {
+      .hero { flex-direction: column; text-align: center; }
+      .hero-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <img
+        class="avatar"
+        src="https://avatars.githubusercontent.com/u/37435456?v=4"
+        alt="nagi211 avatar"
+      />
+      <div class="hero-info">
+        <h1>nagi211</h1>
+        <div class="username">@nagi211 on GitHub</div>
+        <p class="bio">
+          Developer building mobile and web products — from real-time apps to
+          community platforms. Works primarily in TypeScript, JavaScript, and
+          Kotlin.
+        </p>
+        <div class="hero-links">
+          <a href="https://github.com/nagi211" target="_blank" rel="noopener">
+            <!-- GitHub icon -->
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15
+              -.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07
+              -1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0
+              .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82
+              2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65
+              3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
+              8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            github.com/nagi211
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="num">5</div>
+        <div class="label">Repositories</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">3</div>
+        <div class="label">Public Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">3</div>
+        <div class="label">Languages</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">2026</div>
+        <div class="label">Active Since</div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section-header">Featured Projects</div>
+    <div class="projects">
+
+      <!-- turoly -->
+      <a class="project-card" href="https://github.com/nagi211/turoly" target="_blank" rel="noopener">
+        <div class="card-top">
+          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
+            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
+            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
+            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
+          </svg>
+          <h3>turoly</h3>
+        </div>
+        <p>A TypeScript-based platform project — actively developed with a modern web stack.</p>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Web</span>
+          <span class="tag">Platform</span>
+        </div>
+        <div class="card-footer">
+          <span class="lang-dot lang-ts"></span>
+          TypeScript &nbsp;·&nbsp; Updated Jun 2026
+        </div>
+      </a>
+
+      <!-- koino -->
+      <a class="project-card" href="https://github.com/nagi211/koino" target="_blank" rel="noopener">
+        <div class="card-top">
+          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
+            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
+            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
+            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
+          </svg>
+          <h3>koino</h3>
+        </div>
+        <p>A community platform built with TypeScript — focused on connection and collaboration.</p>
+        <div class="tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Community</span>
+          <span class="tag">Platform</span>
+        </div>
+        <div class="card-footer">
+          <span class="lang-dot lang-ts"></span>
+          TypeScript &nbsp;·&nbsp; Created Jun 2026
+        </div>
+      </a>
+
+      <!-- test-timer -->
+      <a class="project-card" href="https://github.com/nagi211/test-timer" target="_blank" rel="noopener">
+        <div class="card-top">
+          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75
+            0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75
+            0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356
+            0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/>
+          </svg>
+          <h3>test-timer</h3>
+        </div>
+        <p>A React Native / Expo timer app — clean mobile UI built with JavaScript.</p>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">React Native</span>
+          <span class="tag">Expo</span>
+          <span class="tag">Mobile</span>
+        </div>
+        <div class="card-footer">
+          <span class="lang-dot lang-js"></span>
+          JavaScript &nbsp;·&nbsp; Jun 2026
+        </div>
+      </a>
+
+      <!-- EYM-guessme (private) -->
+      <div class="project-card" style="opacity:0.6; cursor:default;">
+        <div class="card-top">
+          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4 4v2h-.25C2.76 6 2 6.76 2 7.75v5.5C2 14.24 2.76 15 3.75
+            15h8.5c.99 0 1.75-.76 1.75-1.75v-5.5C14 6.76 13.24 6 12.25 6H12V4a4
+            4 0 018 0 .75.75 0 11-1.5 0 2.5 2.5 0 00-5 0zm0 0"/>
+          </svg>
+          <h3>EYM-guessme</h3>
+          <span class="tag" style="font-size:0.68rem;margin-left:auto;">Private</span>
+        </div>
+        <p>An Android guessing game built in Kotlin — a fun interactive mobile experience.</p>
+        <div class="tags">
+          <span class="tag">Kotlin</span>
+          <span class="tag">Android</span>
+          <span class="tag">Game</span>
+        </div>
+        <div class="card-footer">
+          <span class="lang-dot lang-kotlin"></span>
+          Kotlin &nbsp;·&nbsp; 2020–2021
+        </div>
+      </div>
+
+      <!-- djian (private) -->
+      <div class="project-card" style="opacity:0.6; cursor:default;">
+        <div class="card-top">
+          <svg class="repo-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M4 4v2h-.25C2.76 6 2 6.76 2 7.75v5.5C2 14.24 2.76 15 3.75
+            15h8.5c.99 0 1.75-.76 1.75-1.75v-5.5C14 6.76 13.24 6 12.25 6H12V4a4
+            4 0 018 0 .75.75 0 11-1.5 0 2.5 2.5 0 00-5 0zm0 0"/>
+          </svg>
+          <h3>djian</h3>
+          <span class="tag" style="font-size:0.68rem;margin-left:auto;">Private</span>
+        </div>
+        <p>A private Android project built with Kotlin.</p>
+        <div class="tags">
+          <span class="tag">Kotlin</span>
+          <span class="tag">Android</span>
+        </div>
+        <div class="card-footer">
+          <span class="lang-dot lang-kotlin"></span>
+          Kotlin &nbsp;·&nbsp; 2020
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Skills -->
+    <div class="section-header">Tech Stack</div>
+    <div class="skills-grid">
+      <div class="skill-chip">TypeScript</div>
+      <div class="skill-chip">JavaScript</div>
+      <div class="skill-chip">Kotlin</div>
+      <div class="skill-chip">React Native</div>
+      <div class="skill-chip">Expo</div>
+      <div class="skill-chip">Android</div>
+      <div class="skill-chip">Node.js</div>
+      <div class="skill-chip">Git</div>
+    </div>
+
+    <footer>
+      Built with ♥ &mdash; view on
+      <a href="https://github.com/nagi211" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
