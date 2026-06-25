@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { View, Text, Animated, StyleSheet } from 'react-native';
 import { colors, typography } from '../constants/theme';
 
-export function TimerDisplay({ displayTime, elapsed }) {
+export function TimerDisplay({ displayTime }) {
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const prevDisplayRef = useRef(displayTime);
 
@@ -40,7 +40,6 @@ export function TimerDisplay({ displayTime, elapsed }) {
           <Text style={styles.unit}>{unit}</Text>
         </Text>
       </Animated.View>
-      <Text style={styles.subText}>actual: {elapsed.toFixed(1)}s</Text>
     </View>
   );
 }
@@ -63,11 +62,5 @@ const styles = StyleSheet.create({
     fontSize: typography.unitFontSize,
     fontWeight: '600',
     color: colors.timerText,
-  },
-  subText: {
-    marginTop: 8,
-    fontSize: 14,
-    color: colors.subText,
-    fontWeight: '500',
   },
 });
